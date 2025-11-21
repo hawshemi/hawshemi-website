@@ -1,0 +1,13 @@
+---
+const path = Astro.url.pathname;
+const isFa = path.startsWith('/fa');
+
+const enPath = isFa ? (path.replace(/^\/fa/, '') || '/') : path;
+const faPath = isFa ? path : (path === '/' ? '/fa/' : `/fa${path}`);
+---
+<nav class="flex items-center bg-white/10 rounded-full p-1 backdrop-blur-md">
+  <a href={enPath} class={"px-3 py-1 rounded-full text-xs font-medium transition-all duration-200 " + (!isFa ? 'bg-white text-black shadow-sm' : 'text-text-secondary hover:text-text')}>EN</a>
+  <a href={faPath} class={"px-3 py-1 rounded-full text-xs font-medium transition-all duration-200 " + (isFa ? 'bg-white text-black shadow-sm' : 'text-text-secondary hover:text-text')}>FA</a>
+</nav>
+
+

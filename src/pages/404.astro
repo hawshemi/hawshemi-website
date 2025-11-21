@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="Not Found — Hawshemi">
+  <Fragment slot="header"><Header /></Fragment>
+  <section class="min-h-[60vh] flex items-center justify-center p-4">
+    <div class="glass-card p-12 text-center max-w-md mx-auto">
+      <h1 class="text-6xl font-bold bg-clip-text text-transparent bg-linear-to-b from-white to-white/50 mb-4 pb-1">404</h1>
+      <p class="text-xl text-text font-medium mb-2">Page not found</p>
+      <p class="text-text-secondary mb-8">The page you are looking for doesn't exist or has been moved.</p>
+      <a href="/" class="btn-primary">Go Home</a>
+    </div>
+  </section>
+  <Fragment slot="footer"><Footer /></Fragment>
+</BaseLayout>
+
+

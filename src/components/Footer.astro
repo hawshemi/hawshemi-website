@@ -1,0 +1,67 @@
+---
+import SocialLinks from './SocialLinks.astro';
+import { navEn, navFa } from '../config/navigation';
+
+const year = new Date().getUTCFullYear();
+const path = Astro.url.pathname;
+const isFa = path.startsWith('/fa');
+const base = isFa ? '/fa' : '';
+
+const nav = isFa ? navFa : navEn;
+---
+<footer class="border-t border-white/5 bg-black/20 backdrop-blur-sm mt-auto">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <a href={base + '/'} class="text-base font-semibold text-text tracking-tight">Hawshemi</a>
+        <p class="mt-3 text-sm text-text-secondary leading-relaxed">
+          {isFa ? 'فناوری اطلاعات و امنیت · تمرکز بر کیفیت و سادگی' : 'IT & Security · Focused on quality and simplicity'}
+        </p>
+      </div>
+
+      <nav aria-label={isFa ? 'پیوندهای سایت' : 'Site links'} class="text-sm">
+        <h3 class="text-xs font-semibold uppercase tracking-wide text-text-secondary mb-3">{isFa ? 'سایت' : 'Site'}</h3>
+        <ul class="space-y-2">
+          {nav.map((n) => (
+            <li>
+              <a href={n.href} class="text-text-secondary hover:text-text transition-colors duration-200">{n.label}</a>
+            </li>
+          ))}
+          <li>
+            <a href="/resume.pdf" target="_blank" rel="noopener" class="text-text-secondary hover:text-text transition-colors duration-200">{isFa ? 'رزومه' : 'Resume'}</a>
+          </li>
+          <li>
+            <a href="/sitemap.xml" class="text-text-secondary hover:text-text transition-colors duration-200">Sitemap</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="text-sm">
+        <h3 class="text-xs font-semibold uppercase tracking-wide text-text-secondary mb-3">{isFa ? 'ارتباط' : 'Contact'}</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="mailto:contact@hawshemi.com" class="text-text-secondary hover:text-text transition-colors duration-200">contact@hawshemi.com</a>
+          </li>
+          <li class="text-text-secondary">{isFa ? 'تهران، ایران (UTC)' : 'Tehran, IR (UTC)'}</li>
+        </ul>
+      </div>
+
+      <div class="text-sm">
+        <h3 class="text-xs font-semibold uppercase tracking-wide text-text-secondary mb-3">{isFa ? 'شبکه‌های اجتماعی' : 'Social'}</h3>
+        <div class="">
+          <SocialLinks />
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-8 border-t border-white/5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-xs text-text-secondary">© {year} Hawshemi. All rights reserved.</p>
+      <div class="flex items-center gap-4 text-xs text-text-secondary">
+        <a href="/robots.txt" class="hover:text-text transition-colors duration-200">robots.txt</a>
+        <a href="/sitemap.xml" class="hover:text-text transition-colors duration-200">sitemap.xml</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+

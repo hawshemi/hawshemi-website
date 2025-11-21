@@ -1,0 +1,23 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { navEn, navFa } from '../config/navigation';
+
+const path = Astro.url.pathname;
+const isFa = path.startsWith('/fa');
+const base = isFa ? '/fa' : '';
+
+const nav = isFa ? navFa : navEn;
+---
+<header class="sticky top-0 z-50 glass border-b border-white/5" dir="ltr">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+    <a href={base + '/'} class="font-semibold text-text tracking-tight hover:opacity-80 transition-opacity">Hawshemi</a>
+    <nav class={`hidden sm:flex items-center gap-6 text-sm font-medium ${isFa ? 'flex-row-reverse text-right' : ''}`}>
+      {nav.map((n) => (
+        <a href={n.href} class="text-text-secondary hover:text-text transition-colors duration-200">{n.label}</a>
+      ))}
+    </nav>
+    <LanguageSwitcher />
+  </div>
+</header>
+
+
