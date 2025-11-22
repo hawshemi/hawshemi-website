@@ -1,14 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 ---
 
 <BaseLayout>
-  <Fragment slot="header">
-    <Header />
-  </Fragment>
-
   <section class="py-20 sm:py-32 flex flex-col items-center text-center">
     <div class="mx-auto max-w-3xl">
       <h1 class="text-4xl sm:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-linear-to-b from-white to-white/60 pb-2">
@@ -25,8 +19,4 @@ import Footer from '../components/Footer.astro';
       </div>
     </div>
   </section>
-
-  <Fragment slot="footer">
-    <Footer />
-  </Fragment>
 </BaseLayout>
