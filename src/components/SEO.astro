@@ -1,0 +1,67 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  locale?: string;
+  type?: 'website' | 'article';
+}
+
+const { 
+  title, 
+  description = "Rasoul Hashemi - IT Specialist & Cybersecurity Consultant. Focused on ops, automation, and security.", 
+  image = "/og-image.png",
+  locale = "en",
+  type = "website"
+} = Astro.props;
+
+const siteTitle = title ? `${title} | Hawshemi` : 'Hawshemi - IT Specialist & Cybersecurity Consultant';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL(image, Astro.site);
+
+// Alternate language URL for hreflang
+const isFa = locale === 'fa';
+const altLang = isFa ? 'en' : 'fa';
+const altPath = isFa 
+  ? Astro.url.pathname.replace(/^\/fa/, '') || '/' 
+  : `/fa${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`;
+const altURL = new URL(altPath, Astro.site);
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{siteTitle}</title>
+<meta name="title" content={siteTitle} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={siteTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={socialImageURL} />
+<meta property="og:locale" content={locale} />
+<meta property="og:site_name" content="Hawshemi" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={siteTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={socialImageURL} />
+
+<!-- Alternate Languages -->
+<link rel="alternate" hreflang={locale} href={canonicalURL} />
+<link rel="alternate" hreflang={altLang} href={altURL} />
+<link rel="alternate" hreflang="x-default" href={isFa ? altURL : canonicalURL} />
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="sitemap" href="/sitemap-index.xml" />
