@@ -19,6 +19,15 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { projects };
+const publications = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    summary: z.string(),
+    year: z.number(),
+    link: z.string().url().optional(),
+    lang: z.enum(['en', 'fa']).default('en'),
+  }),
+});
 
-
+export const collections = { projects, publications };
