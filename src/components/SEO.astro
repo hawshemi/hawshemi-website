@@ -1,7 +1,7 @@
 ---
-import { ui } from '../i18n/ui';
+import { siteTitle, siteDescription, defaultLang, ui } from '../i18n/ui';
 
-interface Props {
+export interface Props {
   title?: string;
   description?: string;
   image?: string;
@@ -12,57 +12,55 @@ interface Props {
 const { 
   title, 
   description, 
-  image = "/og-image.png",
-  locale = "en",
-  type = "website"
+  image,
+  locale = defaultLang,
+  type = 'website' 
 } = Astro.props;
 
-const currentLang = locale as keyof typeof ui;
-const t = ui[currentLang] || ui.en;
+const t = ui[locale as keyof typeof ui] || ui[defaultLang];
+const baseSiteTitle = t['site.title'];
 
-const siteName = t['site.title'];
-const defaultDescription = t['site.description'];
-const metaDescription = description || defaultDescription;
+const metaTitle = title 
+  ? (title.includes(baseSiteTitle) ? title : `${title} | ${baseSiteTitle}`)
+  : `${baseSiteTitle} | ${t['site.description']}`;
 
-const siteTitle = title ? `${title} | ${siteName}` : defaultDescription;
+const metaDescription = description || t['site.description'];
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL(image, Astro.site);
+const socialImageURL = new URL(image || '/social-card.png', Astro.site);
 
-// Alternate language URL for hreflang
+// Alternate language URL
 const isFa = locale === 'fa';
+const currentPath = Astro.url.pathname;
 const altLang = isFa ? 'en' : 'fa';
 const altPath = isFa 
-  ? Astro.url.pathname.replace(/^\/fa/, '') || '/' 
-  : `/fa${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`;
+  ? currentPath.replace(/^\/fa/, '') || '/' 
+  : `/fa${currentPath === '/' ? '' : currentPath}`;
 const altURL = new URL(altPath, Astro.site);
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL} />
-
 <!-- Primary Meta Tags -->
-<title>{siteTitle}</title>
-<meta name="title" content={siteTitle} />
+<title>{metaTitle}</title>
+<meta name="title" content={metaTitle} />
 <meta name="description" content={metaDescription} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalURL} />
-<meta property="og:title" content={siteTitle} />
+<meta property="og:title" content={metaTitle} />
 <meta property="og:description" content={metaDescription} />
 <meta property="og:image" content={socialImageURL} />
 <meta property="og:locale" content={locale} />
-<meta property="og:site_name" content={siteName} />
+<meta property="og:site_name" content={baseSiteTitle} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={siteTitle} />
+<meta property="twitter:title" content={metaTitle} />
 <meta property="twitter:description" content={metaDescription} />
 <meta property="twitter:image" content={socialImageURL} />
 
@@ -73,4 +71,7 @@ const altURL = new URL(altPath, Astro.site);
 
 <!-- Favicons -->
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#050507" />
 <link rel="sitemap" href="/sitemap-index.xml" />
