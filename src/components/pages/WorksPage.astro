@@ -11,27 +11,9 @@ const { lang } = Astro.props;
 const t = ui[lang];
 
 const projects = await getCollection('projects').catch(() => []);
+const allPublications = await getCollection('publications').catch(() => []);
 
-const allPublications = {
-  en: [
-    {
-      title: "Design Pattern of Smart Solar Gardens in Fahadan Neighborhood of Yazd with IoT Approach",
-      summary: "First National Conference on Artificial Intelligence and Emerging Research: Convergence of Humans and Intelligent Systems. Authors: Sedigheh Moein Mehr, Seyed Mohammad Rasoul Hashemi",
-      link: "https://civilica.com/doc/2323385/",
-      year: 2025
-    }
-  ],
-  fa: [
-    {
-      title: "الگوی طراحی باغچه‌های خورشیدی هوشمند محله فهادان یزد با رویکرد اینترنت اشیاء",
-      summary: "نخستین همایش ملی هوش مصنوعی و پژوهش‌های نوظهور: همگرایی انسان و سیستم‌های هوشمند. نویسندگان: صدیقه معین مهر، سیدمحمدرسول هاشمی",
-      link: "https://civilica.com/doc/2323385/",
-      year: 2025
-    }
-  ]
-};
-
-const publications = allPublications[lang] || [];
+const publications = allPublications.filter(pub => pub.data.lang === lang).map(pub => pub.data);
 ---
 
 <section class="max-w-5xl mx-auto">
