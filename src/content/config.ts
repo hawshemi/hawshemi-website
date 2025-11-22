@@ -15,7 +15,7 @@ const projects = defineCollection({
       })
       .partial()
       .optional(),
-    stack: z.array(z.string()).optional(),
+    tags: z.array(z.string()).optional(),
   }),
 });
 
@@ -27,6 +27,7 @@ const publications = defineCollection({
     year: z.number(),
     link: z.string().url().optional(),
     lang: z.enum(['en', 'fa']).default('en'),
+    tags: z.array(z.string()).optional(),
   }),
 });
 
