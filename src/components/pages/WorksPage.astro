@@ -48,11 +48,11 @@ const publications = allPublications.filter(pub => pub.data.lang === lang).map(p
           {projects.map((p) => (
             <Card title={p.data.title} href={p.data.links?.repo ?? p.data.links?.demo}>
               <p class="mb-4">{p.data.summary}</p>
-              {p.data.stack && (
+              {p.data.tags && (
                 <ul class="flex flex-wrap gap-2 text-xs">
-                  {p.data.stack.map((s: string) => (
+                  {p.data.tags.map((tag: string) => (
                     <li class="px-2.5 py-1 rounded-full bg-white/5 text-text-secondary border border-white/5">
-                      {s}
+                      {tag}
                     </li>
                   ))}
                 </ul>
@@ -100,7 +100,16 @@ const publications = allPublications.filter(pub => pub.data.lang === lang).map(p
                   </a>
                 )}
               </div>
-              <p class="text-text-secondary">{pub.summary}</p>
+              <p class="text-text-secondary mb-4">{pub.summary}</p>
+              {pub.tags && (
+                <ul class="flex flex-wrap gap-2 text-xs">
+                  {pub.tags.map((tag: string) => (
+                    <li class="px-2.5 py-1 rounded-full bg-white/5 text-text-secondary border border-white/5">
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </article>
           ))}
         </div>
