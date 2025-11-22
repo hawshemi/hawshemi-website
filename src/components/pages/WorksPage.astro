@@ -42,7 +42,7 @@ const publications: { title: string; summary: string; link?: string; year?: numb
           <p class="text-text-secondary">{t['works.empty.projects']}</p>
         </div>
       ) : (
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-left" dir="ltr">
           {projects.map((p) => (
             <Card title={p.data.title} href={p.data.links?.repo ?? p.data.links?.demo}>
               <p class="mb-4">{p.data.summary}</p>
@@ -79,7 +79,7 @@ const publications: { title: string; summary: string; link?: string; year?: numb
           <p class="text-text-secondary">{t['works.empty.publications']}</p>
         </div>
       ) : (
-        <div class="space-y-4">
+        <div class="space-y-4 text-left" dir="ltr">
           {publications.map((pub) => (
             <article class="glass-card interactive p-6 flex flex-col gap-3">
               <div class="flex items-center justify-between gap-3">
