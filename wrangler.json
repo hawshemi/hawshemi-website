@@ -1,0 +1,14 @@
+{
+  "name": "hawshemi-website",
+  "main": "./dist/_worker.js/index.js",
+  "compatibility_date": "2024-11-22",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "assets": {
+    "directory": "./dist"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
