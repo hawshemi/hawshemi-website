@@ -1,5 +1,6 @@
 ---
 import { ui } from '../../i18n/ui';
+import Button from '../Button.astro';
 
 interface Props {
   lang: 'en' | 'fa';
@@ -20,8 +21,8 @@ const t = ui[lang];
     </p>
 
     <div class="mt-10 flex flex-wrap gap-4 justify-center">
-      <a href="/resume.pdf" target="_blank" rel="noopener" class="btn-primary">{t['hero.resume']}</a>
-      <a href="mailto:contact@hawshemi.com" class="btn-ghost">{t['hero.contact']}</a>
+      <Button href="/resume.pdf" target="_blank" rel="noopener" variant="primary">{t['hero.resume']}</Button>
+      <Button href="mailto:contact@hawshemi.com" variant="ghost">{t['hero.contact']}</Button>
     </div>
   </div>
 </section>
