@@ -1,12 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 ---
 <BaseLayout title="درباره — هاشمی">
-  <Fragment slot="header"><Header /></Fragment>
-
   <section class="max-w-3xl mx-auto">
     <h1 class="text-4xl font-bold tracking-tight mb-8 pb-1 bg-clip-text text-transparent bg-linear-to-br from-white to-white/50">درباره</h1>
     
@@ -36,8 +32,4 @@ import SocialLinks from '../../components/SocialLinks.astro';
       </div>
     </div>
   </section>
-
-  <Fragment slot="footer"><Footer /></Fragment>
 </BaseLayout>
-
-
