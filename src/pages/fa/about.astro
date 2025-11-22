@@ -1,35 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SocialLinks from '../../components/SocialLinks.astro';
+import AboutPage from '../../components/pages/AboutPage.astro';
 ---
 <BaseLayout title="درباره — هاشمی">
-  <section class="max-w-3xl mx-auto">
-    <h1 class="text-4xl font-bold tracking-tight mb-8 pb-1 bg-clip-text text-transparent bg-linear-to-br from-white to-white/50">درباره</h1>
-    
-    <div class="glass-card p-8 sm:p-10 prose prose-invert prose-lg max-w-none prose-headings:text-white prose-p:text-text-secondary prose-li:text-text-secondary prose-a:text-accent prose-strong:text-white">
-      <p>
-        مسیر حرفه‌ای من از معماری شروع شد و امروز روی فناوری اطلاعات، امنیت و عملیات نرم‌افزار تمرکز دارد. ترکیب نگاه سیستماتیک معماری با تجربه مدیریت سرویس‌ها کمک می‌کند راهکارهایی ارائه کنم که هم زیبا و منظم باشند و هم تاب‌آوری بالایی داشته باشند.
-      </p>
-      <p>
-        روزانه با لینوکس، Docker، Cloudflare، پلتفرم‌های مانیتورینگ و ابزارهای اتوماسیون سروکار دارم. اسکریپت‌نویسی Bash و Python، مستندسازی و ساده‌سازی جریان کار تیم‌ها بخش جدایی‌ناپذیر کار من است.
-      </p>
-
-      <h2>تمرکزهای اصلی</h2>
-      <ul>
-        <li>زیرساخت و سکو: طراحی، سخت‌سازی و پایش سرورهای VPS و سرویس‌های مبتنی بر Cloudflare</li>
-        <li>اتوماسیون و ابزار: CI/CD سبک، استقرار خودکار، اسکریپت‌های عملیاتی و داشبوردهای وضعیت</li>
-        <li>امنیت و پاسخ‌گویی: تدوین رویه، آموزش تیمی، مدیریت رخداد و کاهش زمان بازیابی</li>
-      </ul>
-
-      <h2>رویکرد کاری</h2>
-      <p>
-        به جای پیچیده‌سازی، سراغ راه‌حل‌های شفاف و قابل نگهداری می‌روم. معیارم این است که هر سیستم باید پایدار بماند، به‌سادگی مانیتور شود و در صورت بروز خطا سریعاً به وضعیت سالم بازگردد.
-      </p>
-
-      <h2>شبکه‌های اجتماعی</h2>
-      <div class="not-prose mt-6">
-        <SocialLinks />
-      </div>
-    </div>
-  </section>
+  <AboutPage lang="fa" />
 </BaseLayout>

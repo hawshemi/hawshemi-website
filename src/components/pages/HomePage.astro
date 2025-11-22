@@ -1,0 +1,27 @@
+---
+import { ui } from '../../i18n/ui';
+
+interface Props {
+  lang: 'en' | 'fa';
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<section class="py-20 sm:py-32 flex flex-col items-center text-center">
+  <div class="mx-auto max-w-3xl">
+    <h1 class="text-4xl sm:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-linear-to-b from-white to-white/60 pb-2">
+      {t['hero.title']}
+    </h1>
+    <p class="mt-4 text-xl text-text font-medium">{t['hero.role']}</p>
+    <p class="mt-6 text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed">
+      {t['hero.description']}
+    </p>
+
+    <div class="mt-10 flex flex-wrap gap-4 justify-center">
+      <a href="/resume.pdf" target="_blank" rel="noopener" class="btn-primary">{t['hero.resume']}</a>
+      <a href="mailto:contact@hawshemi.com" class="btn-ghost">{t['hero.contact']}</a>
+    </div>
+  </div>
+</section>
