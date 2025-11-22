@@ -89,6 +89,9 @@
 
   /* Reusable Text Gradients */
   .text-gradient-cold {
-    @apply bg-clip-text text-transparent bg-linear-to-r from-blue-400 to-cyan-300;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, var(--color-blue-400), var(--color-cyan-300));
   }
 }
