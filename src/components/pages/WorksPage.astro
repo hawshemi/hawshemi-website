@@ -1,0 +1,108 @@
+---
+import Card from '../Card.astro';
+import { getCollection } from 'astro:content';
+import { ui } from '../../i18n/ui';
+
+interface Props {
+  lang: 'en' | 'fa';
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const projects = await getCollection('projects').catch(() => []);
+const publications: { title: string; summary: string; link?: string; year?: number }[] = [];
+---
+
+<section class="max-w-5xl mx-auto">
+  <header class="mb-12">
+    <p class="text-sm font-semibold uppercase tracking-[0.3em] text-text-secondary mb-4">{t['works.title']}</p>
+    <h1 class="text-4xl font-bold tracking-tight mb-4 pb-1 bg-clip-text text-transparent bg-linear-to-br from-white to-white/50">
+      {t['works.subtitle']}
+    </h1>
+    <p class="text-lg text-text-secondary max-w-2xl">
+      {t['works.description']}
+    </p>
+  </header>
+
+  <div class="space-y-16">
+    <section aria-labelledby="projects-heading">
+      <header class="flex items-baseline justify-between mb-8">
+        <div>
+          <p class="text-xs uppercase tracking-[0.4em] text-text-secondary mb-2">{t['works.section.projects']}</p>
+          <h2 id="projects-heading" class="text-3xl font-semibold tracking-tight">{t['works.heading.projects']}</h2>
+        </div>
+        <span class="text-sm text-text-secondary">
+          {t['works.count_entries'].replace('{count}', projects.length.toString())}
+        </span>
+      </header>
+
+      {projects.length === 0 ? (
+        <div class="glass-card p-8 text-center">
+          <p class="text-text-secondary">{t['works.empty.projects']}</p>
+        </div>
+      ) : (
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map((p) => (
+            <Card title={p.data.title} href={p.data.links?.repo ?? p.data.links?.demo}>
+              <p class="mb-4">{p.data.summary}</p>
+              {p.data.stack && (
+                <ul class="flex flex-wrap gap-2 text-xs">
+                  {p.data.stack.map((s: string) => (
+                    <li class="px-2.5 py-1 rounded-full bg-white/5 text-text-secondary border border-white/5">
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </Card>
+          ))}
+        </div>
+      )}
+    </section>
+
+    <section aria-labelledby="publications-heading">
+      <header class="flex items-baseline justify-between mb-8">
+        <div>
+          <p class="text-xs uppercase tracking-[0.4em] text-text-secondary mb-2">{t['works.section.publications']}</p>
+          <h2 id="publications-heading" class="text-3xl font-semibold tracking-tight">{t['works.heading.publications']}</h2>
+        </div>
+        <span class="text-sm text-text-secondary">
+          {publications.length > 0 
+            ? t['works.count_entries'].replace('{count}', publications.length.toString())
+            : t['works.coming_soon']}
+        </span>
+      </header>
+
+      {publications.length === 0 ? (
+        <div class="glass-card p-8 text-center">
+          <p class="text-text-secondary">{t['works.empty.publications']}</p>
+        </div>
+      ) : (
+        <div class="space-y-4">
+          {publications.map((pub) => (
+            <article class="glass-card interactive p-6 flex flex-col gap-3">
+              <div class="flex items-center justify-between gap-3">
+                <div>
+                  <h3 class="text-xl font-semibold">{pub.title}</h3>
+                  {pub.year && <p class="text-text-secondary text-sm">{pub.year}</p>}
+                </div>
+                {pub.link && (
+                  <a
+                    href={pub.link}
+                    class="text-sm font-medium text-accent hover:text-accent/80"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t['works.read']}
+                  </a>
+                )}
+              </div>
+              <p class="text-text-secondary">{pub.summary}</p>
+            </article>
+          ))}
+        </div>
+      )}
+    </section>
+  </div>
+</section>

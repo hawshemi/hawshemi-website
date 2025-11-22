@@ -1,22 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HomePage from '../components/pages/HomePage.astro';
 ---
 
 <BaseLayout>
-  <section class="py-20 sm:py-32 flex flex-col items-center text-center">
-    <div class="mx-auto max-w-3xl">
-      <h1 class="text-4xl sm:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-linear-to-b from-white to-white/60 pb-2">
-        Rasoul Hashemi
-      </h1>
-      <p class="mt-4 text-xl text-text font-medium">IT Specialist & Cybersecurity Consultant</p>
-      <p class="mt-6 text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed">
-        Architectural engineer turned software engineer focused on ops, automation, and security.
-      </p>
-
-      <div class="mt-10 flex flex-wrap gap-4 justify-center">
-        <a href="/resume.pdf" target="_blank" rel="noopener" class="btn-primary">View Resume</a>
-        <a href="mailto:contact@hawshemi.com" class="btn-ghost">Contact Me</a>
-      </div>
-    </div>
-  </section>
+  <HomePage lang="en" />
 </BaseLayout>
