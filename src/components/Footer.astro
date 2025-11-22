@@ -24,14 +24,14 @@ const nav = isFa ? navFa : navEn;
         <ul class="space-y-2">
           {nav.map((n) => (
             <li>
-              <a href={n.href} class="text-text-secondary hover:text-text transition-colors duration-200">{n.label}</a>
+              <a href={n.href} class="text-text-secondary hover:text-accent transition-colors duration-200">{n.label}</a>
             </li>
           ))}
           <li>
-            <a href="/resume.pdf" target="_blank" rel="noopener" class="text-text-secondary hover:text-text transition-colors duration-200">{isFa ? 'رزومه' : 'Resume'}</a>
+            <a href="/resume.pdf" target="_blank" rel="noopener" class="text-text-secondary hover:text-accent transition-colors duration-200">{isFa ? 'رزومه' : 'Resume'}</a>
           </li>
           <li>
-            <a href="/sitemap.xml" class="text-text-secondary hover:text-text transition-colors duration-200">Sitemap</a>
+            <a href="/sitemap.xml" class="text-text-secondary hover:text-accent transition-colors duration-200">Sitemap</a>
           </li>
         </ul>
       </nav>
@@ -40,7 +40,7 @@ const nav = isFa ? navFa : navEn;
         <h3 class="text-xs font-semibold uppercase tracking-wide text-text-secondary mb-3">{isFa ? 'ارتباط' : 'Contact'}</h3>
         <ul class="space-y-2">
           <li>
-            <a href="mailto:contact@hawshemi.com" class="text-text-secondary hover:text-text transition-colors duration-200">contact@hawshemi.com</a>
+            <a href="mailto:contact@hawshemi.com" class="text-text-secondary hover:text-accent transition-colors duration-200">contact@hawshemi.com</a>
           </li>
           <li class="text-text-secondary">{isFa ? 'تهران، ایران (UTC)' : 'Tehran, IR (UTC)'}</li>
         </ul>
@@ -54,14 +54,13 @@ const nav = isFa ? navFa : navEn;
       </div>
     </div>
 
-    <div class="mt-10 pt-8 border-t border-white/5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <div class="mt-10 pt-8 border-t border-white/5 flex flex-col items-center">
       <p class="text-xs text-text-secondary">© {year} Hawshemi. All rights reserved.</p>
-      <div class="flex items-center gap-4 text-xs text-text-secondary">
-        <a href="/robots.txt" class="hover:text-text transition-colors duration-200">robots.txt</a>
-        <a href="/sitemap.xml" class="hover:text-text transition-colors duration-200">sitemap.xml</a>
+      {/* Hidden SEO links */}
+      <div class="hidden">
+        <a href="/robots.txt">robots.txt</a>
+        <a href="/sitemap.xml">sitemap.xml</a>
       </div>
     </div>
   </div>
 </footer>
-
-

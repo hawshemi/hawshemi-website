@@ -1,13 +1,11 @@
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
-
 @theme {
   --color-accent: #7D7AFF; /* Spatial Indigo - Creative & Secure */
-  --color-bg: #000000;
-  --color-surface: #1c1c1e;
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-text: #f5f5f7;
-  --color-text-secondary: #a1a1a6;
+  --color-accent-secondary: #38BDF8; /* Sky Blue - Fluid gradients */
+  --color-bg: #050507; /* Deep Space - Richer than pure black */
+  --color-surface: #161618; /* Gunmetal - Smooth contrast */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-text: #EDEDEF; /* Off-White - Reduced eye strain */
+  --color-text-secondary: #A1A1AA; /* Zinc Grey - Accessible muted text */
   --radius-card: 18px;
   --font-en: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-fa: "Vazirmatn", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -17,7 +15,9 @@
   :root { color-scheme: dark; }
   html { 
     background: var(--color-bg); 
-    background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #000000 100%);
+    background-image: 
+      radial-gradient(circle at 15% 0%, rgba(125, 122, 255, 0.1) 0%, transparent 40%),
+      radial-gradient(circle at 85% 0%, rgba(56, 189, 248, 0.15) 0%, transparent 50%);
     min-height: 100%;
   }
   body { 
@@ -54,12 +54,13 @@
     background: linear-gradient(180deg, rgba(32, 32, 35, 0.6) 0%, rgba(22, 22, 24, 0.4) 100%);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-top: 1px solid rgba(255, 255, 255, 0.12); /* Top highlight for depth */
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-top: 1px solid rgba(255, 255, 255, 0.15); /* Top highlight for depth */
+    border-left: 1px solid rgba(255, 255, 255, 0.08); /* Subtle side light */
     border-radius: var(--radius-card);
     box-shadow: 
-      0 4px 24px -1px rgba(0, 0, 0, 0.2), 
-      inset 0 0 0 1px rgba(255, 255, 255, 0.02); /* Inner stroke */
+      0 4px 24px -1px rgba(0, 0, 0, 0.3), 
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.05); /* Inner highlight */
     transition: background 0.3s ease;
   }
   
