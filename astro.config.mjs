@@ -16,6 +16,6 @@ export default defineConfig({
     routing: { prefixDefaultLocale: false },
   },
   vite: {
-    plugins: [tailwind()],
+    plugins: [tailwind() as any],
   },
 });
