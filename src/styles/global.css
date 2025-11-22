@@ -1,14 +1,22 @@
 @theme {
-  --color-accent: #7D7AFF; /* Spatial Indigo - Creative & Secure */
-  --color-accent-secondary: #38BDF8; /* Sky Blue - Fluid gradients */
+  --color-defense: #3B82F6; /* Blue Team - Defense & Stability */
+  --color-attack: #F43F5E; /* Red Team - Offense & Impact */
+  
+  /* RGB Components for Opacity Modifiers */
+  --color-defense-rgb: 59, 130, 246;
+  --color-attack-rgb: 244, 63, 94;
+  
+  --color-accent: var(--color-defense);
+  --color-accent-secondary: var(--color-attack);
+  
   --color-bg: #050507; /* Deep Space - Richer than pure black */
   --color-surface: #161618; /* Gunmetal - Smooth contrast */
   --color-border: rgba(255, 255, 255, 0.08);
   --color-text: #EDEDEF; /* Off-White - Reduced eye strain */
   --color-text-secondary: #A1A1AA; /* Zinc Grey - Accessible muted text */
   --radius-card: 18px;
-  --font-en: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-fa: "Vazirmatn", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-en: "Open Sans", Arial, sans-serif;
+  --font-fa: "Vazirmatn", Arial, sans-serif;
 }
 
 @layer base {
@@ -16,8 +24,8 @@
   html { 
     background: var(--color-bg); 
     background-image: 
-      radial-gradient(circle at 15% 0%, rgba(125, 122, 255, 0.1) 0%, transparent 40%),
-      radial-gradient(circle at 85% 0%, rgba(56, 189, 248, 0.15) 0%, transparent 50%);
+      radial-gradient(circle at 15% 0%, rgba(var(--color-defense-rgb), 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 85% 0%, rgba(var(--color-attack-rgb), 0.15) 0%, transparent 50%);
     min-height: 100%;
   }
   body { 
@@ -32,7 +40,7 @@
 
   /* link + focus states */
   a { color: var(--color-accent); text-decoration: none; transition: color 0.2s ease; }
-  a:hover { color: #5ac8fa; }
+  a:hover { color: var(--color-accent-secondary); }
 
   :where(a,button,[role="button"]):focus-visible {
     outline: 2px solid var(--color-accent);
@@ -46,7 +54,7 @@
     background-color: rgba(22, 22, 24, 0.7); /* Deeper, richer dark base */
     backdrop-filter: saturate(180%) blur(25px); /* Apple-style vibrancy */
     -webkit-backdrop-filter: saturate(180%) blur(25px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Subtle separator */
+    border-bottom: 1px solid rgba(var(--color-defense-rgb), 0.1); /* Blue accent border */
     box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2); /* Soft depth */
   }
 
@@ -55,17 +63,18 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.03);
-    border-top: 1px solid rgba(255, 255, 255, 0.15); /* Top highlight for depth */
-    border-left: 1px solid rgba(255, 255, 255, 0.08); /* Subtle side light */
+    border-top: 1px solid rgba(var(--color-defense-rgb), 0.15); /* Blue top highlight */
+    border-left: 1px solid rgba(255, 255, 255, 0.05); 
     border-radius: var(--radius-card);
     box-shadow: 
       0 4px 24px -1px rgba(0, 0, 0, 0.3), 
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.05); /* Inner highlight */
-    transition: background 0.3s ease;
+      inset 0 1px 0 0 rgba(var(--color-defense-rgb), 0.05); /* Blue inner highlight */
+    transition: background 0.3s ease, border-color 0.3s ease;
   }
   
   .glass-card.interactive:hover {
     background: linear-gradient(180deg, rgba(44, 44, 48, 0.7) 0%, rgba(32, 32, 35, 0.5) 100%);
+    border-top-color: rgba(var(--color-attack-rgb), 0.2); /* Red top highlight on hover */
   }
 
   .animate-fade-in {
@@ -76,5 +85,10 @@
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Reusable Text Gradients */
+  .text-gradient-cold {
+    @apply bg-clip-text text-transparent bg-linear-to-r from-blue-400 to-cyan-300;
   }
 }
