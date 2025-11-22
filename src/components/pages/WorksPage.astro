@@ -1,5 +1,6 @@
 ---
 import Card from '../Card.astro';
+import Button from '../Button.astro';
 import { getCollection } from 'astro:content';
 import { ui } from '../../i18n/ui';
 
@@ -29,7 +30,7 @@ const publications = allPublications.filter(pub => pub.data.lang === lang).map(p
 
   <div class="space-y-16">
     <section aria-labelledby="projects-heading">
-      
+      <header class="flex items-baseline justify-between mb-8">
         <div>
           <p class="text-xs uppercase tracking-[0.4em] text-text-secondary mb-2">{t['works.section.projects']}</p>
           <h2 id="projects-heading" class="text-3xl font-semibold tracking-tight">{t['works.heading.projects']}</h2>
@@ -47,9 +48,9 @@ const publications = allPublications.filter(pub => pub.data.lang === lang).map(p
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-left" dir="ltr">
           {projects.map((p) => (
             <Card title={p.data.title} href={p.data.links?.repo ?? p.data.links?.demo}>
-              <p class="mb-4">{p.data.summary}</p>
+              <p>{p.data.summary}</p>
               {p.data.tags && (
-                <ul class="flex flex-wrap gap-2 text-xs">
+                <ul slot="tags" class="flex flex-wrap gap-2 text-xs">
                   {p.data.tags.map((tag: string) => (
                     <li class="px-2.5 py-1 rounded-full bg-white/5 text-text-secondary border border-white/5">
                       {tag}
@@ -90,25 +91,40 @@ const publications = allPublications.filter(pub => pub.data.lang === lang).map(p
                   {pub.year && <p class="text-text-secondary text-sm">{pub.year}</p>}
                 </div>
                 {pub.link && (
-                  <a
-                    href={pub.link}
-                    class="text-sm font-medium text-accent hover:text-accent/80"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {t['works.read']}
-                  </a>
+                  <div class="md:hidden">
+                    <a
+                      href={pub.link}
+                      class="text-sm font-medium text-accent hover:text-accent/80"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {t['works.read']}
+                    </a>
+                  </div>
                 )}
               </div>
-              <p class="text-text-secondary mb-4">{pub.summary}</p>
-              {pub.tags && (
-                <ul class="flex flex-wrap gap-2 text-xs">
-                  {pub.tags.map((tag: string) => (
-                    <li class="px-2.5 py-1 rounded-full bg-white/5 text-text-secondary border border-white/5">
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
+              <div class="flex-grow">
+                <p class="text-text-secondary">{pub.summary}</p>
+              </div>
+              
+              <div class="mt-4">
+                {pub.tags && (
+                  <ul class="flex flex-wrap gap-2 text-xs">
+                    {pub.tags.map((tag: string) => (
+                      <li class="px-2.5 py-1 rounded-full bg-white/5 text-text-secondary border border-white/5">
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+
+              {pub.link && (
+                <div class="mt-6 pt-4 border-t border-white/10">
+                  <Button href={pub.link} variant="ghost" size="sm" class="w-full rounded-lg" target="_blank" rel="noopener noreferrer">
+                    {t['works.read']}
+                  </Button>
+                </div>
               )}
             </article>
           ))}
