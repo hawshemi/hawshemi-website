@@ -9,13 +9,12 @@ export default defineConfig({
   adapter: cloudflare({
     imageService: 'compile',
   }),
-  viewTransitions: true,
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'fa'],
     routing: { prefixDefaultLocale: false },
   },
   vite: {
-    plugins: [tailwind() as any],
+    plugins: [/** @type {any} */ (tailwind())],
   },
 });
