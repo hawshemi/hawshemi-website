@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 @theme {
   --color-defense: #3B82F6; /* Blue Team - Defense & Stability */
   --color-attack: #F43F5E; /* Red Team - Offense & Impact */
