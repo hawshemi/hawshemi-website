@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
+import icon from 'astro-icon';
 import tailwind from '@tailwindcss/vite';
 
 // https://astro.build/config
@@ -12,7 +13,7 @@ export default defineConfig({
   adapter: cloudflare({
     imageService: 'compile',
   }),
-  integrations: [sitemap(), robotsTxt()],
+  integrations: [sitemap(), robotsTxt(), icon()],
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'fa'],
