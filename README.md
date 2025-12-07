@@ -1,6 +1,6 @@
 ## hawshemi-website
 
-Personal website for Rasoul Hashemi – IT & Cybersecurity.
+Personal website for Rasoul Hashemi.
 
 ## Stack
 
