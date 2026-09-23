@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "wrangler dev --local",
     "deploy": "astro build && wrangler deploy",
     "astro": "astro"
   },

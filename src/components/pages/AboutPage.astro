@@ -10,31 +10,32 @@ const { lang } = Astro.props;
 const t = ui[lang];
 ---
 
-<section class="max-w-3xl mx-auto">
-  <h1 class="text-4xl font-bold tracking-tight mb-8 pb-1 text-gradient-cold">
-    {t['about.title']}
-  </h1>
-  
-  <div class="glass-card p-8 sm:p-10 prose prose-invert prose-lg max-w-none prose-headings:text-white prose-p:text-text-secondary prose-li:text-text-secondary prose-a:text-accent prose-strong:text-white">
+<section class="max-w-2xl">
+  <header class="page-heading">
+    <h1 class="page-title">{t['about.title']}</h1>
+  </header>
+  <div class="space-y-5 text-text-secondary">
     {t['about.intro'].split('\n\n').map((p) => <p>{p}</p>)}
+  </div>
 
-    <h2>{t['about.highlights']}</h2>
-    <ul>
+  <section class="mt-8 border-t border-border pt-6" aria-labelledby="highlights-heading">
+    <h2 id="highlights-heading" class="text-lg font-semibold">{t['about.highlights']}</h2>
+    <ul class="mt-4 list-disc space-y-3 ps-5 text-text-secondary marker:text-accent">
       <li>{t['about.highlight.1']}</li>
       <li>{t['about.highlight.2']}</li>
       <li>{t['about.highlight.3']}</li>
     </ul>
+  </section>
 
-    {lang === 'fa' && (
-      <>
-        <h2>{ui.fa['about.approach']}</h2>
-        <p>{ui.fa['about.approach.text']}</p>
-      </>
-    )}
+  {lang === 'fa' && (
+    <section class="mt-8 border-t border-border pt-6" aria-labelledby="approach-heading">
+      <h2 id="approach-heading" class="text-lg font-semibold">{ui.fa['about.approach']}</h2>
+      <p class="mt-4 text-text-secondary">{ui.fa['about.approach.text']}</p>
+    </section>
+  )}
 
-    <h2>{t['about.find_me']}</h2>
-    <div class="not-prose mt-6">
-      <SocialLinks />
-    </div>
-  </div>
+  <section class="mt-8" aria-labelledby="social-heading">
+    <h2 id="social-heading" class="mb-3 text-lg font-semibold">{t['about.find_me']}</h2>
+    <SocialLinks />
+  </section>
 </section>

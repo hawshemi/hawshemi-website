@@ -20,17 +20,17 @@ const {
   ...props 
 } = Astro.props;
 
-const baseStyles = "inline-flex items-center justify-center rounded-full font-semibold transition-all duration-200 ease-in-out cursor-pointer";
+const baseStyles = "inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border font-semibold text-center cursor-pointer";
 
 const variants = {
-  primary: "bg-accent text-black hover:bg-accent/90",
-  ghost: "bg-white/5 text-text hover:bg-white/10",
+  primary: "border-accent bg-accent text-bg hover:bg-text hover:border-text",
+  ghost: "border-border bg-transparent text-text hover:bg-surface hover:border-text-secondary",
 };
 
 const sizes = {
   sm: "px-4 py-2 text-sm",
-  md: "px-6 py-2.5 text-base",
-  lg: "px-8 py-3 text-lg",
+  md: "px-5 py-2.5 text-sm",
+  lg: "px-5 py-3 text-base",
 };
 
 const classes = [

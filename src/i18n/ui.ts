@@ -18,8 +18,8 @@ export const ui = {
     'hero.title': 'Rasoul Hashemi',
     'hero.role': 'IT Specialist & Cybersecurity Consultant',
     'hero.description': 'Architectural engineer turned software engineer focused on ops, automation, and security.',
-    'hero.resume': 'View Resume',
-    'hero.contact': 'Contact Me',
+    'hero.works': 'View my work',
+    'hero.contact': 'Contact me',
 
     'about.title': 'About',
     'about.intro': 'I’m an IT Specialist and Cybersecurity Consultant with a background in Architectural Engineering. I’m pivoting to software engineering, focusing on operations, automation, and security. I bring cross-disciplinary thinking, and I value clarity, reliability, and impact.',
@@ -30,7 +30,7 @@ export const ui = {
     'about.find_me': 'Find me',
 
     'works.title': 'Works',
-    'works.subtitle': 'Projects & Publications',
+    'works.subtitle': 'Projects & publications',
     'works.description': 'Long-form experiments, tools, and writing around automation, ops, and security.',
     'works.section.projects': 'Builds',
     'works.heading.projects': 'Projects',
@@ -38,7 +38,8 @@ export const ui = {
     'works.section.publications': 'Writing',
     'works.heading.publications': 'Publications',
     'works.empty.publications': 'Publications will be listed here soon.',
-    'works.read': 'Read',
+    'works.read': 'Read publication',
+    'works.view_project': 'View project',
     'works.count_entries': '{count} entries',
     'works.coming_soon': 'Coming soon',
 
@@ -58,7 +59,7 @@ export const ui = {
     'hero.title': 'رسول هاشمی',
     'hero.role': 'متخصص فناوری اطلاعات، امنیت سایبری و عملیات',
     'hero.description': 'زیرساخت و سرویس‌ها را طوری طراحی می‌کنم که امن، مانیتورپذیر و قابل اتکا بمانند. از تجربه معماری برای نظم‌دهی به فرآیندهای DevOps، استقرار خودکار و پاسخ‌گویی به رخدادها استفاده می‌کنم و روی سیستم‌های سبک، مستند و آینده‌نگر تمرکز دارم.',
-    'hero.resume': 'مشاهده رزومه',
+    'hero.works': 'مشاهده کارها',
     'hero.contact': 'تماس',
 
     'about.title': 'درباره',
@@ -80,7 +81,8 @@ export const ui = {
     'works.section.publications': 'نوشته‌ها',
     'works.heading.publications': 'انتشارات',
     'works.empty.publications': 'در حال نگارش یادداشت‌ها و مطالعه‌های موردی هستم.',
-    'works.read': 'مطالعه',
+    'works.read': 'مطالعه مقاله',
+    'works.view_project': 'مشاهده پروژه',
     'works.count_entries': '{count} مورد ثبت‌شده',
     'works.coming_soon': 'به‌زودی منتشر می‌شود',
 

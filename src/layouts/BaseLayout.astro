@@ -9,6 +9,7 @@ const isFa = pathname.startsWith("/fa");
 const locale = isFa ? "fa" : "en";
 const { noHeader = false, noFooter = false, title, description, image, type } = Astro.props;
 ---
+<!doctype html>
 <html lang={locale} dir={isFa ? 'rtl' : 'ltr'}>
   <head>
     <SEO 
@@ -26,8 +27,9 @@ const { noHeader = false, noFooter = false, title, description, image, type } = 
     />
   </head>
   <body class="min-h-dvh bg-bg text-text antialiased flex flex-col">
+    <a href="#main-content" class="skip-link">{isFa ? 'رفتن به محتوای اصلی' : 'Skip to content'}</a>
     {!noHeader && <Header />}
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in grow">
+    <main id="main-content" tabindex="-1" class="site-width py-10 sm:py-14 grow">
       <slot />
     </main>
     {!noFooter && <Footer />}

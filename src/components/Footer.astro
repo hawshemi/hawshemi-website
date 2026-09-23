@@ -1,91 +1,20 @@
 ---
 import SocialLinks from './SocialLinks.astro';
-import { navEn, navFa } from '../config/navigation';
 
 const year = new Date().getUTCFullYear();
-const path = Astro.url.pathname;
-const isFa = path.startsWith('/fa');
-const base = isFa ? '/fa' : '';
-
-const nav = isFa ? navFa : navEn;
-const footerLabel = isFa ? 'پاورقی سایت' : 'Site footer';
+const isFa = Astro.url.pathname.startsWith('/fa');
 ---
-<footer class="mt-auto glass-footer" aria-label={footerLabel}>
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <div class="grid gap-y-8 gap-x-8 sm:grid-cols-3 text-center sm:gap-y-0">
-      <div class="space-y-4">
-        <a
-          href={base + '/'}
-          class="inline-block text-base font-semibold text-text hover:opacity-80 transition-opacity"
-        >
-          Hawshemi
-        </a>
-        <p class="text-sm text-text-secondary leading-relaxed max-w-sm mx-auto">
-          {isFa ? 'فناوری اطلاعات و امنیت سایبری - تمرکز بر کیفیت و سادگی' : 'IT & Cybersecurity - Focused on quality and simplicity'}
-        </p>
-
-        <div class="text-sm">
-          <h3 class="text-xs font-semibold uppercase tracking-wide text-text-secondary mb-3">
-            {isFa ? 'ارتباط' : 'Contact'}
-          </h3>
-          <ul class="space-y-2">
-            <li>
-              <a
-                href="mailto:contact@hawshemi.com"
-                class="text-text-secondary hover:text-accent transition-colors duration-200"
-              >
-                contact@hawshemi.com
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <nav aria-label={isFa ? 'پیوندهای سایت' : 'Site links'} class="text-sm">
-        <h3 class="text-xs font-semibold uppercase tracking-wide text-text-secondary mb-3">
-          {isFa ? 'سایت' : 'Site'}
-        </h3>
-        <ul class="space-y-2">
-          {nav.map((n) => (
-            <li>
-              <a href={n.href} class="text-text-secondary hover:text-accent transition-colors duration-200">
-                {n.label}
-              </a>
-            </li>
-          ))}
-          <li>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener"
-              class="text-text-secondary hover:text-accent transition-colors duration-200"
-            >
-              {isFa ? 'رزومه' : 'Resume'}
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      <div class="text-sm space-y-4">
-        <div>
-          <h3 class="text-xs font-semibold uppercase tracking-wide text-text-secondary mb-3">
-            {isFa ? 'شبکه‌های اجتماعی' : 'Social'}
-          </h3>
-          <SocialLinks />
-        </div>
-      </div>
+<footer class="site-width mt-auto border-t border-border py-6">
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <div class="text-sm">
+      <p class="text-text-secondary">{isFa ? 'تمرکز بر کیفیت و سادگی' : 'Focused on quality and simplicity.'}</p>
+      <a href="mailto:contact@hawshemi.com" lang="en" dir="ltr" class="text-link inline-flex min-h-11 items-center">contact@hawshemi.com</a>
     </div>
-
-    <div class="mt-8 pt-6 text-center">
-      <p class="text-xs text-text-secondary">
-        {isFa ? `© ${year} هاوشمی. همه حقوق محفوظ است.` : `© ${year} Hawshemi. All rights reserved.`}
-      </p>
-      <div class="hidden">
-        <a href="/robots.txt">robots.txt</a>
-        <a href="/sitemap.xml">sitemap.xml</a>
-      </div>
-    </div>
+    <SocialLinks />
   </div>
+  <p class="mt-4 text-xs text-text-secondary">
+    © {new Intl.NumberFormat(isFa ? 'fa' : 'en', { useGrouping: false }).format(year)} {isFa ? 'هاشمی' : 'Hawshemi'}
+  </p>
 </footer>
 
 

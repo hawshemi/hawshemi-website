@@ -1,11 +1,14 @@
 ---
-const path = Astro.url.pathname;
-const isFa = path.startsWith('/fa');
+import { navEn } from '../config/navigation';
 
-const enPath = isFa ? (path.replace(/^\/fa/, '') || '/') : path;
-const faPath = isFa ? path : (path === '/' ? '/fa/' : `/fa${path}`);
+const path = Astro.url.pathname;
+const isFa = path === '/fa' || path.startsWith('/fa/');
+const contentPath = (isFa ? path.replace(/^\/fa/, '') : path).replace(/\/$/, '') || '/';
+const enPath = navEn.some(n => n.href === contentPath) ? contentPath : '/';
+const faPath = enPath === '/' ? '/fa/' : `/fa${enPath}`;
 ---
-<nav class="flex items-center bg-white/5 rounded-full p-1 backdrop-blur-md border border-white/5" dir="ltr">
-  <a href={enPath} style="font-family: var(--font-en)" class={"w-10 py-1 rounded-full text-xs font-medium text-center transition-all duration-300 " + (!isFa ? 'bg-accent/10 text-accent shadow-[0_0_10px_rgba(var(--color-defense-rgb),0.2)] ring-1 ring-accent/20' : 'text-text-secondary hover:text-accent hover:bg-white/5')}>EN</a>
-  <a href={faPath} style="font-family: var(--font-en)" class={"w-10 py-1 rounded-full text-xs font-medium text-center transition-all duration-300 " + (isFa ? 'bg-accent/10 text-accent shadow-[0_0_10px_rgba(var(--color-defense-rgb),0.2)] ring-1 ring-accent/20' : 'text-text-secondary hover:text-accent hover:bg-white/5')}>FA</a>
+<nav aria-label={isFa ? 'زبان' : 'Language'} class="flex items-center gap-1 text-sm" dir="ltr">
+  <a href={enPath} lang="en" hreflang="en" aria-current={!isFa ? 'page' : undefined} class="nav-link px-2.5">English</a>
+  <span class="text-border" aria-hidden="true">/</span>
+  <a href={faPath} lang="fa" hreflang="fa" aria-current={isFa ? 'page' : undefined} class="nav-link px-2.5">فارسی</a>
 </nav>

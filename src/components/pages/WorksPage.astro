@@ -1,7 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Card from '../Card.astro';
-import Button from '../Button.astro';
 import { getCollection } from 'astro:content';
 import { ui } from '../../i18n/ui';
 
@@ -11,127 +10,69 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = ui[lang];
-
-const projects = await getCollection('projects').catch(() => []);
-const allPublications = await getCollection('publications').catch(() => []);
-
-const publications = allPublications.filter(pub => pub.data.lang === lang).map(pub => pub.data);
+const projects = (await getCollection('projects')).sort((a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title));
+const publications = (await getCollection('publications'))
+  .filter(pub => pub.data.lang === lang)
+  .sort((a, b) => b.data.year - a.data.year)
+  .map(pub => pub.data);
 ---
 
-<section class="max-w-5xl mx-auto">
-  <header class="mb-12">
-    <p class="text-sm font-semibold uppercase tracking-[0.3em] text-text-secondary mb-4">{t['works.title']}</p>
-    <h1 class="text-4xl font-bold tracking-tight mb-4 pb-1 text-gradient-cold">
-      {t['works.subtitle']}
-    </h1>
-    <p class="text-lg text-text-secondary max-w-2xl">
-      {t['works.description']}
-    </p>
+<section>
+  <header class="page-heading">
+    <h1 class="page-title">{t['works.subtitle']}</h1>
+    <p class="page-intro">{t['works.description']}</p>
   </header>
 
-  <div class="space-y-16">
-    <section aria-labelledby="projects-heading">
-      <header class="flex items-baseline justify-between mb-8">
-        <div>
-          <p class="text-xs uppercase tracking-[0.4em] text-text-secondary mb-2">{t['works.section.projects']}</p>
-          <h2 id="projects-heading" class="text-3xl font-semibold tracking-tight">{t['works.heading.projects']}</h2>
-        </div>
-        <span class="text-sm text-text-secondary">
-          {t['works.count_entries'].replace('{count}', projects.length.toString())}
-        </span>
-      </header>
+  <section aria-labelledby="projects-heading">
+    <h2 id="projects-heading" class="mb-4 text-lg font-semibold">{t['works.heading.projects']}</h2>
+    {projects.length === 0 ? (
+      <p class="panel p-5 text-text-secondary">{t['works.empty.projects']}</p>
+    ) : (
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((p) => (
+          <Card title={p.data.title} href={p.data.links?.repo ?? p.data.links?.demo} lang={lang}>
+            <p>{p.data.summary}</p>
+            {p.data.tags && (
+              <ul slot="tags" class="flex flex-wrap gap-1.5 text-xs text-text-secondary">
+                {p.data.tags.map((tag: string) => (
+                  <li class="rounded-md border border-border px-2 py-0.5">{tag}</li>
+                ))}
+              </ul>
+            )}
+          </Card>
+        ))}
+      </div>
+    )}
+  </section>
 
-      {projects.length === 0 ? (
-        <div class="glass-card p-8 text-center">
-          <p class="text-text-secondary">{t['works.empty.projects']}</p>
-        </div>
-      ) : (
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-left" dir="ltr">
-          {projects.map((p) => (
-            <Card title={p.data.title} href={p.data.links?.repo ?? p.data.links?.demo}>
-              <p>{p.data.summary}</p>
-              {p.data.tags && (
-                <ul slot="tags" class="flex flex-wrap gap-2 text-xs">
-                  {p.data.tags.map((tag: string) => (
-                    <li class="px-2.5 py-1 rounded-full bg-white/5 text-text-secondary border border-white/5">
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </Card>
-          ))}
-        </div>
-      )}
-    </section>
-
-    <section aria-labelledby="publications-heading">
-      <header class="flex items-baseline justify-between mb-8">
-        <div>
-          <p class="text-xs uppercase tracking-[0.4em] text-text-secondary mb-2">{t['works.section.publications']}</p>
-          <h2 id="publications-heading" class="text-3xl font-semibold tracking-tight">{t['works.heading.publications']}</h2>
-        </div>
-        <span class="text-sm text-text-secondary">
-          {publications.length > 0 
-            ? t['works.count_entries'].replace('{count}', publications.length.toString())
-            : t['works.coming_soon']}
-        </span>
-      </header>
-
-      {publications.length === 0 ? (
-        <div class="glass-card p-8 text-center">
-          <p class="text-text-secondary">{t['works.empty.publications']}</p>
-        </div>
-      ) : (
-        <div class="space-y-4" dir={lang === 'fa' ? 'rtl' : 'ltr'}>
-          {publications.map((pub) => (
-            <article class="glass-card interactive p-6 flex flex-col gap-3">
-              <div class="flex items-center justify-between gap-3">
-                <div>
-                  <h3 class="text-xl font-semibold">{pub.title}</h3>
-                  {pub.year && <p class="text-text-secondary text-sm">{pub.year}</p>}
-                </div>
-                {pub.link && (
-                  <div class="md:hidden">
-                    <a
-                      href={pub.link}
-                      class="text-sm font-medium text-accent hover:text-accent/80"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {t['works.read']}
-                    </a>
-                  </div>
-                )}
-              </div>
-              <div class="grow">
-                <p class="text-text-secondary">{pub.summary}</p>
-              </div>
-              
-              <div class="mt-4">
-                {pub.tags && (
-                  <ul class="flex flex-wrap gap-2 text-xs">
-                    {pub.tags.map((tag: string) => (
-                      <li class="px-2.5 py-1 rounded-full bg-white/5 text-text-secondary border border-white/5">
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-
-              {pub.link && (
-                <div class="mt-6 pt-4 border-t border-white/10">
-                  <Button href={pub.link} variant="ghost" size="sm" class="w-full rounded-lg gap-2" target="_blank" rel="noopener noreferrer">
-                    {t['works.read']}
-                    <Icon name="lucide:book-open" class="size-4" />
-                  </Button>
-                </div>
-              )}
-            </article>
-          ))}
-        </div>
-      )}
-    </section>
-  </div>
+  <section class="mt-9" aria-labelledby="publications-heading">
+    <h2 id="publications-heading" class="mb-4 text-lg font-semibold">{t['works.heading.publications']}</h2>
+    {publications.length === 0 ? (
+      <p class="panel p-5 text-text-secondary">{t['works.empty.publications']}</p>
+    ) : (
+      <div class="space-y-4">
+        {publications.map((pub) => (
+          <article class="panel p-5 sm:p-6">
+            {pub.year && <p class="mb-2 text-sm tabular-nums text-text-secondary">{new Intl.NumberFormat(lang, { useGrouping: false }).format(pub.year)}</p>}
+            <h3 class="max-w-3xl text-lg font-semibold">{pub.title}</h3>
+            <p class="mt-3 max-w-3xl text-sm text-text-secondary">{pub.summary}</p>
+            {!!pub.tags?.length && (
+              <ul class="mt-4 flex flex-wrap gap-1.5 text-xs text-text-secondary">
+                {pub.tags.map((tag: string) => (
+                  <li class="rounded-md border border-border px-2 py-0.5">{tag}</li>
+                ))}
+              </ul>
+            )}
+            {pub.link && (
+              <a href={pub.link} class="text-link mt-3 inline-flex min-h-11 items-center gap-2 text-sm">
+                {t['works.read']}
+                <span class="sr-only">: {pub.title}</span>
+                <Icon name="lucide:arrow-up-right" class="size-4 rtl:-scale-x-100" aria-hidden="true" />
+              </a>
+            )}
+          </article>
+        ))}
+      </div>
+    )}
+  </section>
 </section>

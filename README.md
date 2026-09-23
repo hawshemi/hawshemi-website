@@ -25,5 +25,5 @@ The dev server runs on `http://localhost:4321` by default.
 ```bash
 npm run dev      # start dev server
 npm run build    # production build
-npm run preview  # preview production build
+npm run preview  # preview the production build locally on port 8787
 ```

@@ -9,27 +9,21 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = ui[lang];
+const base = lang === 'fa' ? '/fa' : '';
 ---
 
-<section class="py-20 sm:py-32 flex flex-col items-center text-center">
-  <div class="mx-auto max-w-3xl">
-    <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-gradient-cold pb-2">
-      {t['hero.title']}
-    </h1>
-    <p class="mt-4 text-xl text-text font-medium">{t['hero.role']}</p>
-    <p class="mt-6 text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed">
-      {t['hero.description']}
-    </p>
-
-    <div class="mt-10 flex flex-wrap gap-4 justify-center">
-      <Button href="/resume.pdf" target="_blank" rel="noopener" variant="primary" class="gap-2">
-        <Icon name="lucide:file-text" class="size-5" />
-        {t['hero.resume']}
-      </Button>
-      <Button href="/contact" variant="ghost" class="gap-2">
-        <Icon name="lucide:mail" class="size-5" />
-        {t['hero.contact']}
-      </Button>
-    </div>
+<section class="max-w-2xl py-6 sm:py-12">
+  <p class="mb-5 text-sm font-medium text-accent">{t['hero.role']}</p>
+  <h1 class="text-4xl font-semibold leading-tight sm:text-5xl">{t['hero.title']}</h1>
+  <p class="mt-5 max-w-xl text-base leading-relaxed text-text-secondary sm:text-lg">{t['hero.description']}</p>
+  <div class="mt-8 flex flex-wrap gap-3">
+    <Button href={`${base}/works`}>
+      {t['hero.works']}
+      <Icon name="lucide:arrow-up-right" class="size-4 rtl:-scale-x-100" aria-hidden="true" />
+    </Button>
+    <Button href={`${base}/contact`} variant="ghost">
+      <Icon name="lucide:mail" class="size-4" aria-hidden="true" />
+      {t['hero.contact']}
+    </Button>
   </div>
 </section>
