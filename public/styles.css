@@ -1,6 +1,6 @@
 :root {
   color-scheme: light dark;
-  --paper: light-dark(#f6f5f8, #1e1d24);
+  --paper: light-dark(#f7f7f8, #202024);
   --ink: light-dark(#302e3c, #eeecf5);
   --quiet: light-dark(#655f70, #b6b0c4);
   --wash: light-dark(#eeecf2, #292732);
@@ -34,15 +34,11 @@ button { font: inherit; }
 
 .identity { display: flex; flex-wrap: wrap; align-items: center; gap: 13px; margin-bottom: 25px; }
 .monogram {
-  display: grid;
-  place-items: center;
+  display: block;
   flex: 0 0 46px;
+  width: 46px;
   height: 46px;
-  padding-top: 3px;
-  border-radius: 16px;
-  background: var(--wash);
   color: var(--accent);
-  font: 400 33px/1 Georgia, serif;
 }
 .name { flex: 1; min-width: min-content; }
 h1 { margin: 0; font-size: 1.5rem; font-weight: 600; line-height: 1.3; letter-spacing: -.03em; }
@@ -70,23 +66,20 @@ h1 { margin: 0; font-size: 1.5rem; font-weight: 600; line-height: 1.3; letter-sp
 .intro { margin: 0; color: var(--quiet); }
 .intro p { margin: 0; }
 .intro p + p { margin-top: 12px; }
-h2 { margin: 0 0 10px; font-size: .875rem; line-height: 1.5; font-weight: 600; color: var(--quiet); }
-.profile-section { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); }
+h2 { margin: 0 0 10px; font-size: .875rem; line-height: 1.5; font-weight: 600; color: var(--ink); }
+.profile-section { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
 .work-group + .work-group { margin-top: 24px; }
 .work-category { margin: 0 0 10px; font-size: .875rem; font-weight: 500; color: var(--quiet); }
-.work-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.work-list { margin: 0; padding: 0; list-style: none; }
 .work {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 14px;
-  height: 100%;
-  padding: 16px;
-  border-radius: 12px;
-  background: var(--wash);
-  transition: background-color 150ms ease;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
 }
-.work:hover { background: var(--hover); }
+.work:hover h4 { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
 .work h4 { width: fit-content; margin: 0; font-size: 1rem; font-weight: 500; line-height: 1.55; }
 .work p { margin: 2px 0 0; color: var(--quiet); font-size: .875rem; line-height: 1.6; }
 .arrow { display: inline-block; flex-shrink: 0; color: var(--accent); transition: transform 150ms ease; }
@@ -112,16 +105,11 @@ html[lang="fa"] h1 { letter-spacing: normal; }
 html[lang="fa"] .pocket { line-height: 1.9; }
 html[dir="rtl"] .arrow { transform: scaleX(-1); }
 html[dir="rtl"] a:hover .arrow { transform: translate(-2px, -2px) scaleX(-1); }
-.monogram { font-family: Georgia, serif; }
-
-@media (max-width: 600px) {
-  .work-list { grid-template-columns: 1fr; }
-}
 
 @media (max-width: 420px) {
   .identity { gap: 10px; }
   h1 { font-size: 1.375rem; }
-  .monogram { flex-basis: 40px; height: 40px; border-radius: 13px; font-size: 29px; }
+  .monogram { flex-basis: 40px; width: 40px; height: 40px; }
   .controls { gap: 0; }
   .controls button, .controls .language { min-width: 32px; padding-inline: 4px; }
 }

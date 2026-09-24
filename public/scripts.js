@@ -14,7 +14,7 @@ function updateTheme() {
     ? (dark ? 'تغییر به زمینه روشن' : 'تغییر به زمینه تیره')
     : (dark ? 'Switch to light theme' : 'Switch to dark theme'))
   document.querySelectorAll('meta[name="theme-color"]').forEach(meta => {
-    meta.content = dark ? '#1e1d24' : '#f6f5f8'
+    meta.content = dark ? '#202024' : '#f7f7f8'
   })
 }
 
