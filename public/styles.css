@@ -88,9 +88,9 @@ h2 { margin: 0 0 10px; font-size: 12px; line-height: 1.5; font-weight: 500; colo
 .work p { margin: 2px 0 0; color: var(--quiet); font-size: 12px; line-height: 1.6; }
 .arrow { display: inline-block; flex-shrink: 0; color: var(--accent); transition: transform 150ms ease; }
 a:hover .arrow { transform: translate(2px, -2px); }
-.publication { display: flex; align-items: baseline; justify-content: space-between; gap: 6px 18px; padding-block: 4px; font-size: 13px; }
-.publication small { flex-shrink: 0; font-size: 11px; color: var(--quiet); }
-.publication:hover > span { color: var(--accent); }
+.publication-list { display: grid; gap: 16px; margin: 0; padding: 4px 0; list-style: none; }
+.publication { display: grid; gap: 2px; font-size: 13px; }
+.publication small { font-size: 11px; color: var(--quiet); }
 .education-list { display: grid; gap: 16px; margin: 0; padding: 4px 0; list-style: none; }
 .education-list h3 { margin: 0; font-size: 13px; font-weight: 500; }
 .education-list p { margin: 2px 0; font-size: 12px; color: var(--quiet); }
@@ -105,7 +105,6 @@ footer { margin-top: 27px; }
 :lang(en) { font-family: "DM Sans", Arial, sans-serif; }
 html[lang="fa"] h1 { letter-spacing: normal; font-size: 22px; }
 html[lang="fa"] .pocket { line-height: 1.9; }
-html[lang="fa"] .publication { flex-wrap: wrap; }
 html[dir="rtl"] .arrow { transform: scaleX(-1); }
 html[dir="rtl"] a:hover .arrow { transform: translate(-2px, -2px) scaleX(-1); }
 .monogram { font-family: "Newsreader", Georgia, serif; }
@@ -116,7 +115,6 @@ html[dir="rtl"] a:hover .arrow { transform: translate(-2px, -2px) scaleX(-1); }
   .monogram { flex-basis: 40px; height: 40px; border-radius: 13px; font-size: 29px; }
   .controls { gap: 0; }
   .controls button { min-width: 32px; padding-inline: 4px; }
-  .publication { flex-wrap: wrap; }
 }
 
 @media (max-width: 360px) {
