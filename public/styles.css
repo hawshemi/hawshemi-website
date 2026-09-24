@@ -42,13 +42,13 @@ button { font: inherit; }
   border-radius: 16px;
   background: var(--wash);
   color: var(--accent);
-  font: 400 33px/1 "Newsreader", Georgia, serif;
+  font: 400 33px/1 Georgia, serif;
 }
 .name { flex: 1; min-width: min-content; }
 h1 { margin: 0; font-size: 1.5rem; font-weight: 600; line-height: 1.3; letter-spacing: -.03em; }
 .handle { display: inline-block; color: var(--quiet); font-size: .8125rem; line-height: 1.4; }
 .controls { display: flex; align-items: center; gap: 2px; margin-inline-start: auto; }
-.controls button {
+.controls button, .controls .language {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -61,7 +61,7 @@ h1 { margin: 0; font-size: 1.5rem; font-weight: 600; line-height: 1.3; letter-sp
   color: var(--quiet);
   cursor: pointer;
 }
-.controls button:hover { background: var(--wash); color: var(--ink); }
+.controls button:hover, .controls .language:hover { background: var(--wash); color: var(--ink); }
 .language { font-size: .875rem; }
 .theme .sun { display: none; }
 :root[data-theme="dark"] .theme .sun { display: block; }
@@ -112,7 +112,7 @@ html[lang="fa"] h1 { letter-spacing: normal; }
 html[lang="fa"] .pocket { line-height: 1.9; }
 html[dir="rtl"] .arrow { transform: scaleX(-1); }
 html[dir="rtl"] a:hover .arrow { transform: translate(-2px, -2px) scaleX(-1); }
-.monogram { font-family: "Newsreader", Georgia, serif; }
+.monogram { font-family: Georgia, serif; }
 
 @media (max-width: 600px) {
   .work-list { grid-template-columns: 1fr; }
@@ -123,11 +123,11 @@ html[dir="rtl"] a:hover .arrow { transform: translate(-2px, -2px) scaleX(-1); }
   h1 { font-size: 1.375rem; }
   .monogram { flex-basis: 40px; height: 40px; border-radius: 13px; font-size: 29px; }
   .controls { gap: 0; }
-  .controls button { min-width: 32px; padding-inline: 4px; }
+  .controls button, .controls .language { min-width: 32px; padding-inline: 4px; }
 }
 
 @media (pointer: coarse) {
-  .controls button, .socials a, .hello { min-height: 44px; min-width: 44px; }
+  .controls button, .controls .language, .socials a, .hello { min-height: 44px; min-width: 44px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
