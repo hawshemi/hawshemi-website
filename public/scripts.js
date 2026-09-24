@@ -34,8 +34,8 @@ function updateLanguage() {
   languageButton.setAttribute('aria-label', isFa ? 'Switch to English' : 'تغییر زبان به فارسی')
   document.querySelector('.socials').setAttribute('aria-label', isFa ? 'شبکه‌های اجتماعی' : 'Elsewhere')
   document.querySelector('meta[name="description"]').content = isFa
-    ? 'رسول هاشمی. از معماری به نرم‌افزار، ساخت ابزار برای سرورهای لینوکسی و آزمایش شبکه.'
-    : 'Rasoul Hashemi. From architecture to software, building tools for Linux servers and network testing.'
+    ? 'رسول هاشمی، متخصص فناوری اطلاعات با تمرکز بر شبکه و امنیت سایبری و پیشینهٔ تحصیلی در معماری.'
+    : 'Rasoul Hashemi, an IT specialist focused on networking and cybersecurity, with a background in architecture.'
   updateTheme()
 }
 
