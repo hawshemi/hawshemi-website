@@ -96,9 +96,10 @@ a:hover .arrow { transform: translate(2px, -2px); }
 .education-list h3 { margin: 0; font-size: 13px; font-weight: 500; }
 .education-list p { margin: 2px 0; font-size: 12px; color: var(--quiet); }
 .education-list small { display: block; font-size: 11px; color: var(--quiet); }
-footer { margin-top: 27px; }
-.hello { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; color: var(--accent); font-size: 13px; }
-.socials { display: flex; align-items: center; flex-wrap: wrap; gap: 0 18px; margin-top: 5px; }
+footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
+.hello { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--wash); color: var(--accent); font-size: 13px; font-weight: 500; transition: background-color 150ms ease, border-color 150ms ease; }
+.hello:hover { background: var(--hover); border-color: var(--accent); }
+.socials { display: flex; align-items: center; flex-wrap: wrap; gap: 0 14px; }
 .socials a { display: inline-flex; align-items: center; min-height: 36px; font-size: 12px; color: var(--quiet); }
 .socials a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
 
