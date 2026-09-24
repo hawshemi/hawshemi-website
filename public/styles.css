@@ -66,10 +66,11 @@ h1 { margin: 0; font-size: 1.5rem; font-weight: 600; line-height: 1.3; letter-sp
 .intro { margin: 0; color: var(--quiet); }
 .intro p { margin: 0; }
 .intro p + p { margin-top: 12px; }
-h2 { margin: 0 0 10px; font-size: .875rem; line-height: 1.5; font-weight: 600; color: var(--ink); }
+h2 { margin: 0 0 22px; font-size: 1.125rem; line-height: 1.4; font-weight: 600; color: var(--accent); }
 .profile-section { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+section.profile-section { margin-top: 40px; }
 .work-group + .work-group { margin-top: 24px; }
-.work-category { margin: 0 0 10px; font-size: .875rem; font-weight: 500; color: var(--quiet); }
+.work-category { margin: 0 0 10px; font-size: .8125rem; font-weight: 500; color: var(--quiet); }
 .work-list { margin: 0; padding: 0; list-style: none; }
 .work {
   display: flex;
@@ -105,6 +106,11 @@ html[lang="fa"] h1 { letter-spacing: normal; }
 html[lang="fa"] .pocket { line-height: 1.9; }
 html[dir="rtl"] .arrow { transform: scaleX(-1); }
 html[dir="rtl"] a:hover .arrow { transform: translate(-2px, -2px) scaleX(-1); }
+
+@media (min-width: 1120px) {
+  section.profile-section { position: relative; margin-inline-start: -172px; padding-inline-start: 172px; }
+  section.profile-section > h2 { position: absolute; inset-inline-start: 0; top: 24px; width: 144px; margin: 0; font-size: 1.25rem; }
+}
 
 @media (max-width: 420px) {
   .identity { gap: 10px; }
