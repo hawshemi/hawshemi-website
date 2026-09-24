@@ -28,7 +28,7 @@ function updateLanguage() {
   document.querySelectorAll('[data-en]').forEach(element => {
     element.textContent = element.dataset[root.lang]
   })
-  document.title = isFa ? 'رسول هاشمی · Hawshemi' : 'Rasoul Hashemi · Hawshemi'
+  document.title = isFa ? 'رسول هاشمی | Hawshemi' : 'Rasoul Hashemi | Hawshemi'
   languageButton.textContent = isFa ? 'English' : 'فارسی'
   languageButton.lang = isFa ? 'en' : 'fa'
   languageButton.setAttribute('aria-label', isFa ? 'Switch to English' : 'تغییر زبان به فارسی')
