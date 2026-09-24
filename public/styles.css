@@ -91,6 +91,7 @@ a:hover .arrow { transform: translate(2px, -2px); }
 .publication-list { display: grid; gap: 16px; margin: 0; padding: 4px 0; list-style: none; }
 .publication { display: grid; gap: 2px; font-size: 13px; }
 .publication small { font-size: 11px; color: var(--quiet); }
+.publication a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
 .education-list { display: grid; gap: 16px; margin: 0; padding: 4px 0; list-style: none; }
 .education-list h3 { margin: 0; font-size: 13px; font-weight: 500; }
 .education-list p { margin: 2px 0; font-size: 12px; color: var(--quiet); }
