@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="theme-color" content="#f7f7f8" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#202024" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f5f6f5" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1c2021" media="(prefers-color-scheme: dark)">
     <script>
       const url = new URL(location.href)
       const language = url.searchParams.get('lang')
@@ -44,6 +44,7 @@
     <script src="/scripts.js" defer></script>
   </head>
   <body>
+    <a class="skip-link" href="#content">Skip to content</a>
     <main class="pocket">
       <header class="identity">
         <svg class="monogram" viewBox="0 0 64 64" width="46" height="46" aria-hidden="true"><path d="M11 49V28M11 38C11 31 17 26 24 28M33 15V49M33 38C33 24 53 24 53 38V49" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -60,7 +61,7 @@
         </div>
       </header>
 
-      <div class="intro">
+      <div class="intro" id="content" tabindex="-1">
         <p>I’m an architect and IT specialist, with most of my work focused on Linux systems, networking, and cybersecurity. I build websites and software tools for testing networks, optimizing servers, and automating server setup and maintenance.</p>
         <p>Alongside my technology work, I work on architectural projects. My academic background is in architectural engineering and landscape architecture. My research explores how landscape design, the Internet of Things, and neuroscience can support mental well-being.</p>
       </div>
@@ -69,7 +70,7 @@
         <h2 id="projects-title">Works</h2>
         <section class="work-group" aria-labelledby="websites-title">
           <h3 class="work-category" id="websites-title">Websites</h3>
-          <ul class="work-list">
+          <ul class="work-list" role="list">
             <li>
               <a class="work" href="https://vegetiveoil.com/">
                 <div><h4 lang="en" dir="ltr">Herbanol</h4><p>Company website for natural antioxidants, built with Astro.</p></div>
@@ -93,7 +94,7 @@
 
         <section class="work-group" aria-labelledby="tools-title">
           <h3 class="work-category" id="tools-title">Tools</h3>
-          <ul class="work-list">
+          <ul class="work-list" role="list">
             <li>
               <a class="work" href="https://github.com/hawshemi/linux-optimizer">
                 <div><h4 lang="en" dir="ltr">Linux Optimizer</h4><p>Automate Linux server updates, network tuning, and common setup tasks.</p></div>
@@ -118,7 +119,7 @@
 
       <section class="research profile-section" aria-labelledby="research-title">
         <h2 id="research-title">Publications</h2>
-        <ul class="publication-list">
+        <ul class="publication-list" role="list">
           <li class="publication">
             <span>Smart Green Landscape Design Based on Neuroarchitecture: Convergence of the Internet of Things and Neuroscience for Enhancing Users’ Mental Health</span>
             <small>2026</small>
@@ -132,7 +133,7 @@
 
       <section class="education profile-section" aria-labelledby="education-title">
         <h2 id="education-title">Education</h2>
-        <ul class="education-list">
+        <ul class="education-list" role="list">
           <li>
             <h3>Master of Science in landscape architecture</h3>
             <p>Azad University, South Tehran branch</p>
