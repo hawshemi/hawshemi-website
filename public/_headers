@@ -1,2 +1,2 @@
 /fonts/*.woff2
-  Cache-Control: public, max-age=86400, must-revalidate
+  Cache-Control: public, max-age=2592000, must-revalidate
