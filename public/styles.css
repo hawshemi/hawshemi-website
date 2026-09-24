@@ -70,14 +70,15 @@ h2 { margin: 0 0 22px; font-size: 1.125rem; line-height: 1.4; font-weight: 600; 
 .profile-section { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
 section.profile-section { margin-top: 40px; }
 .work-group + .work-group { margin-top: 24px; }
-.work-category { margin: 0 0 10px; font-size: .8125rem; font-weight: 500; color: var(--quiet); }
+.work-category { margin: 0 0 6px; font-size: .875rem; font-weight: 600; color: var(--ink); }
+.work-category::before { content: ""; display: inline-block; width: 16px; height: 1px; margin-inline-end: 8px; background: var(--accent); vertical-align: middle; }
 .work-list { margin: 0; padding: 0; list-style: none; }
 .work {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 14px;
-  padding: 16px 0;
+  padding: 12px 0;
   border-bottom: 1px solid var(--line);
 }
 .work:hover h4 { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
@@ -108,8 +109,9 @@ html[dir="rtl"] .arrow { transform: scaleX(-1); }
 html[dir="rtl"] a:hover .arrow { transform: translate(-2px, -2px) scaleX(-1); }
 
 @media (min-width: 1120px) {
-  section.profile-section { position: relative; margin-inline-start: -172px; padding-inline-start: 172px; }
-  section.profile-section > h2 { position: absolute; inset-inline-start: 0; top: 24px; width: 144px; margin: 0; font-size: 1.25rem; }
+  section.profile-section { display: grid; grid-template-columns: 144px minmax(0, 1fr); column-gap: 28px; align-items: baseline; margin-inline-start: -172px; }
+  section.profile-section > h2 { grid-column: 1; grid-row: 1; margin: 0; font-size: 1.25rem; }
+  section.profile-section > :not(h2) { grid-column: 2; min-width: 0; }
 }
 
 @media (max-width: 420px) {
